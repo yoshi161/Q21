@@ -1,0 +1,17 @@
+<div>
+	<div class="row">
+	    <div class="col-lg-6">
+	      	<ul>
+	      		<li *ngFor="let item of removedItems"> {{item.id}} {{item.data}}</li>
+	      	</ul>
+	    </div>
+	    <div class="col-lg-6">
+			<drag-drop [items]="items"
+					(removedItem)="removeItem($event)"></drag-drop>
+	    </div>
+	</div>
+	<button type="button" class="btn btn-primary"
+        tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+	  Simple demo
+	</button>
+</div>

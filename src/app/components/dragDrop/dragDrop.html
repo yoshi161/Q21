@@ -1,0 +1,42 @@
+
+<div [ngStyle]="{ 'display': 'flex', 'justifyContent': 'stretch', 'marginTop': '50px', 'marginRight': '50px' }">
+  <div [ngStyle]="{'marginLeft': '50px', 'flex': '1'}">
+    <smooth-dnd-container [groupName]="'1'" [getChildPayload]="getChildPayload" (drop)="onDrop('items1', $event)">
+      <smooth-dnd-draggable *ngFor="let item of items; let i = index">
+        <div class="draggable-item">
+          {{item.data}}
+          <button type="button" class="btn btn-primary" (click)="removeItem(item)">
+            Remove
+          </button>
+        </div>
+      </smooth-dnd-draggable>
+    </smooth-dnd-container>
+  </div>
+<!--   <div [ngStyle]="{'marginLeft': '50px', 'flex': '1'}">
+    <smooth-dnd-container [groupName]="'1'" [getChildPayload]="getChildPayload2" (drop)="onDrop('items2', $event)">
+      <smooth-dnd-draggable *ngFor="let item of items2">
+        <div class="draggable-item">
+          {{item.data}}
+        </div>
+      </smooth-dnd-draggable>
+    </smooth-dnd-container>
+  </div>
+  <div [ngStyle]="{'marginLeft': '50px', 'flex': '1'}">
+    <smooth-dnd-container [groupName]="'1'" [getChildPayload]="getChildPayload3" (drop)="onDrop('items3', $event)">
+      <smooth-dnd-draggable *ngFor="let item of items3">
+        <div class="draggable-item">
+          {{item.data}}
+        </div>
+      </smooth-dnd-draggable>
+    </smooth-dnd-container>
+  </div>
+  <div [ngStyle]="{'marginLeft': '50px', 'flex': '1'}">
+    <smooth-dnd-container [groupName]="'1'" [getChildPayload]="getChildPayload4" (drop)="onDrop('items4', $event)">
+      <smooth-dnd-draggable *ngFor="let item of items4">
+        <div class="draggable-item">
+          {{item.data}}
+        </div>
+      </smooth-dnd-draggable>
+    </smooth-dnd-container>
+  </div>
+</div> -->
