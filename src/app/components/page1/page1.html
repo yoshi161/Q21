@@ -1,17 +1,31 @@
+<style type="text/css">
+	.top-buffer { margin-top:40px; }
+</style>
 <div>
 	<div class="row">
 	    <div class="col-lg-6">
-	      	<ul>
-	      		<li *ngFor="let item of removedItems"> {{item.id}} {{item.data}}</li>
-	      	</ul>
+	    	<input [(ngModel)]="selectedValue"
+			       [typeahead]="removedItems"
+			       typeaheadOptionField="data"
+			       (typeaheadOnSelect)="onSelect($event)"
+       			   typeaheadWaitMs="1000"
+			       class="form-control"/>
+			<div class="top-buffer">
+		    	<removed-item 
+		    		[removedItems]="filteredRemovedItems()"
+		    		(addItemBackOut)="addItemBack($event)"
+		    		(addItemBackDragDropOut)="addItemBackDragDrop($event)"
+		    		>
+		    	</removed-item>
+			</div>
 	    </div>
 	    <div class="col-lg-6">
-			<drag-drop [items]="items"
-					(removedItem)="removeItem($event)"></drag-drop>
+			<drag-drop 
+				[items]="items"
+				(removeItemOut)="removeItem($event)"
+				(removeItemDragDropOut)="removeItemDragDrop($event)"
+				>
+			</drag-drop>
 	    </div>
 	</div>
-	<button type="button" class="btn btn-primary"
-        tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
-	  Simple demo
-	</button>
 </div>

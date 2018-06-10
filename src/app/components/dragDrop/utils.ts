@@ -1,9 +1,7 @@
 export class DragDropUtils {
 
   static applyDrag(arr, dragResult: any) {
-    const removedIndex = dragResult.removedIndex;
-    const addedIndex = dragResult.addedIndex;
-    const payload = dragResult.payload;
+    const { removedIndex, addedIndex, payload } = dragResult;
 
     if ( removedIndex === null && addedIndex === null ) {
         return arr;
@@ -11,16 +9,27 @@ export class DragDropUtils {
 
     const result = [...arr];
     let itemtoadd = payload;
-
+    let values = [...result];
     if (removedIndex !== null) {
-        itemtoadd = result.splice(removedIndex, 1)[0];
+        values = result
+                .filter(val => val.id !== payload.id)
+                .map((val, idx) => {
+                        val.idx = idx;
+                        return val;
+                    });
     }
 
     if (addedIndex !== null) {
-        result.splice(addedIndex, 0, itemtoadd);
+        values =  [...values.slice(null, addedIndex), 
+                itemtoadd, 
+                ...values.slice(addedIndex)]
+                .map((val, idx) => {
+                    val.idx = idx
+                    return val;
+                });
     }
 
-    return result;
+    return values;
   }
 
  static generateItems(count, creator) {
