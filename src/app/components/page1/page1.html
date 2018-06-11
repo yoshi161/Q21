@@ -1,25 +1,34 @@
 <style type="text/css">
-	.top-buffer { margin-top:40px; }
+	.top-buffer { 
+		margin-top:40px; 
+	}
 </style>
 <div>
-	<div class="row">
-	    <div class="col-lg-6">
-	    	<input [(ngModel)]="selectedValue"
-			       [typeahead]="removedItems"
-			       typeaheadOptionField="data"
-			       (typeaheadOnSelect)="onSelect($event)"
-       			   typeaheadWaitMs="1000"
-			       class="form-control"/>
-			<div class="top-buffer">
-		    	<removed-item 
-		    		[removedItems]="filteredRemovedItems()"
-		    		(addItemBackOut)="addItemBack($event)"
-		    		(addItemBackDragDropOut)="addItemBackDragDrop($event)"
-		    		>
-		    	</removed-item>
-			</div>
-	    </div>
-	    <div class="col-lg-6">
+	<div class="row justify-content-start" style="height: 100vh;">
+	    <div class="col-lg-5">
+	    	<div class="row">
+				<div class="col-lg-12 jumbotron jumbotron-fluid">
+					<p class="text-center display-4">{{items[0].data}}</p>
+				</div>
+				<div class="col-lg-12">
+			    	<input [(ngModel)]="selectedValue"
+					       [typeahead]="removedItems"
+					       typeaheadOptionField="data"
+					       (typeaheadOnSelect)="onSelect($event)"
+		       			   typeaheadWaitMs="1000"
+					       class="form-control"/>
+					<div class="top-buffer">
+				    	<removed-item 
+				    		[removedItems]="filteredRemovedItems()"
+				    		(addItemBackOut)="addItemBack($event)"
+				    		(addItemBackDragDropOut)="addItemBackDragDrop($event)"
+				    		>
+				    	</removed-item>
+					</div>
+				</div>
+	    	</div>
+		</div>
+	    <div class="col-lg-7">
 			<drag-drop 
 				[items]="items"
 				(removeItemOut)="removeItem($event)"

@@ -1,8 +1,17 @@
 <div>
-	<drag-drop></drag-drop>
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
 
-	<button type="button" class="btn btn-primary"
-        tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
-	  Simple demo
-	</button>
+  <ul>
+    <li>
+      <h2><a routerLink="/home" routerLinkActive="active">Home</a></h2>
+    </li>
+    <li>
+      <h2><a routerLink="/page1" routerLinkActive="active">Page 1</a></h2>
+    </li>
+    <li>
+      <h2><a routerLink="/drag-drop" routerLinkActive="active">Drag Drop</a></h2>
+    </li>
+  </ul>
 </div>

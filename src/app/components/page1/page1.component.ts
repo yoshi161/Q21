@@ -47,7 +47,6 @@ export class Page1Component {
     }
 
     removeItemDragDrop($event) {
-        debugger
         this.items = DragDropUtils.applyDrag(this.items, $event);
     }
 }
